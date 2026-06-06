@@ -1,0 +1,16 @@
+{
+  "name": "@doc-ai/shared-errors",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@doc-ai/api-contracts": "workspace:*",
+    "zod": "^3.25.76"
+  }
+}

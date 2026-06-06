@@ -1,0 +1,20 @@
+{
+  "name": "@doc-ai/wrapper-api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "WRAPPER_API_PORT=${WRAPPER_API_PORT:-3201} MASTER_AGENT_URL=${MASTER_AGENT_URL:-http://localhost:3301} tsx watch src/server.ts"
+  },
+  "dependencies": {
+    "@doc-ai/api-contracts": "workspace:*",
+    "@doc-ai/agent-runtime": "workspace:*",
+    "@doc-ai/shared-config": "workspace:*",
+    "@doc-ai/shared-errors": "workspace:*",
+    "@doc-ai/shared-logger": "workspace:*",
+    "@fastify/cors": "^10.0.1",
+    "@fastify/helmet": "^12.0.1",
+    "fastify": "^5.6.2"
+  }
+}

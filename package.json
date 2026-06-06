@@ -1,0 +1,44 @@
+{
+  "name": "chatwithdocuments-tanstack",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r --workspace-concurrency=4 build",
+    "dev": "concurrently -n dms-api,dms-ui,dms-query-mcp,dms-fetch-mcp,vector-mcp,metadata-agent,fetch-agent,ocr-agent,vector-agent,answer-agent,master-agent,agentic-api,wrapper-api,chatbot-ui -c cyan,green,magenta,magenta,magenta,blue,blue,blue,blue,blue,blue,yellow,yellow,green \"pnpm --filter @doc-ai/dms-api dev\" \"pnpm --filter @doc-ai/dms-ui dev\" \"pnpm --filter @doc-ai/dms-query-mcp dev\" \"pnpm --filter @doc-ai/dms-fetch-mcp dev\" \"pnpm --filter @doc-ai/vector-mcp dev\" \"pnpm --filter @doc-ai/metadata-agent dev\" \"pnpm --filter @doc-ai/fetch-document-agent dev\" \"pnpm --filter @doc-ai/ocr-agent dev\" \"pnpm --filter @doc-ai/vector-ingestion-agent dev\" \"pnpm --filter @doc-ai/answer-agent dev\" \"pnpm --filter @doc-ai/master-agent dev\" \"pnpm --filter @doc-ai/agentic-api dev\" \"pnpm --filter @doc-ai/wrapper-api dev\" \"pnpm --filter @doc-ai/chatbot-ui dev\"",
+    "test": "vitest run",
+    "test:api": "vitest run services",
+    "test:contract": "vitest run packages services/wrapper-api",
+    "test:e2e": "vitest run apps agents",
+    "test:integration": "vitest run services mcp-servers agents",
+    "test:unit": "vitest run packages",
+    "smoke": "bash scripts/smoke-test.sh"
+  },
+  "dependencies": {
+    "@fastify/cors": "^10.0.1",
+    "@fastify/helmet": "^12.0.1",
+    "@fastify/multipart": "^9.0.3",
+    "@tanstack/react-query": "^5.91.1",
+    "@tanstack/react-router": "^1.132.0",
+    "fastify": "^5.6.2",
+    "lucide-react": "^0.468.0",
+    "mongodb": "^6.21.0",
+    "mysql2": "^3.15.3",
+    "pino": "^9.14.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "uuid": "^11.0.5",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.6.0",
+    "concurrently": "^9.2.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vite": "^6.3.6",
+    "vitest": "^3.2.4"
+  }
+}

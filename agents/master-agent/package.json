@@ -1,0 +1,20 @@
+{
+  "name": "@doc-ai/master-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/orchestrator.ts"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "MASTER_AGENT_PORT=${MASTER_AGENT_PORT:-3301} METADATA_AGENT_URL=${METADATA_AGENT_URL:-http://localhost:3302} FETCH_DOCUMENT_AGENT_URL=${FETCH_DOCUMENT_AGENT_URL:-http://localhost:3303} OCR_AGENT_URL=${OCR_AGENT_URL:-http://localhost:3304} VECTOR_INGESTION_AGENT_URL=${VECTOR_INGESTION_AGENT_URL:-http://localhost:3305} ANSWER_AGENT_URL=${ANSWER_AGENT_URL:-http://localhost:3306} VECTOR_MCP_URL=${VECTOR_MCP_URL:-http://localhost:3403} tsx watch src/server.ts"
+  },
+  "dependencies": {
+    "@doc-ai/api-contracts": "workspace:*",
+    "@doc-ai/agent-runtime": "workspace:*",
+    "@doc-ai/shared-config": "workspace:*",
+    "@doc-ai/shared-errors": "workspace:*",
+    "fastify": "^5.6.2"
+  }
+}

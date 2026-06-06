@@ -1,0 +1,228 @@
+name: document-ai-poc
+
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: document_ai
+      MYSQL_USER: document_ai
+      MYSQL_PASSWORD: document_ai
+      MYSQL_ROOT_PASSWORD: document_ai_root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./docker/mysql:/docker-entrypoint-initdb.d:ro
+
+  mongodb:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  qdrant:
+    image: qdrant/qdrant:v1.12.6
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant-data:/qdrant/storage
+
+  dms-api:
+    build:
+      context: ..
+      dockerfile: infra/docker/node-service.Dockerfile
+    command: pnpm --filter @doc-ai/dms-api dev
+    depends_on:
+      - mysql
+      - mongodb
+    environment:
+      DMS_API_PORT: 3101
+      DMS_STORAGE_MODE: database
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: document_ai
+      MYSQL_USER: document_ai
+      MYSQL_PASSWORD: document_ai
+      MONGODB_URL: mongodb://mongodb:27017
+      MONGODB_DATABASE: document_ai
+      MONGODB_GRIDFS_BUCKET: dms_documents
+      ALLOWED_ORIGINS: http://localhost:3000,http://localhost:3102
+      UPLOAD_ALLOWED_MIME_TYPES: application/pdf
+      MAX_PDF_BYTES: 10485760
+    ports:
+      - "3101:3101"
+
+  dms-query-mcp:
+    build:
+      context: ..
+      dockerfile: infra/docker/node-service.Dockerfile
+    command: pnpm --filter @doc-ai/dms-query-mcp dev
+    depends_on:
+      - dms-api
+    environment:
+      DMS_QUERY_MCP_PORT: 3401
+      DMS_API_URL: http://dms-api:3101
+    ports:
+      - "3401:3401"
+
+  dms-fetch-mcp:
+    build:
+      context: ..
+      dockerfile: infra/docker/node-service.Dockerfile
+    command: pnpm --filter @doc-ai/dms-fetch-mcp dev
+    depends_on:
+      - dms-api
+    environment:
+      DMS_FETCH_MCP_PORT: 3402
+      DMS_API_URL: http://dms-api:3101
+    ports:
+      - "3402:3402"
+
+  vector-mcp:
+    build:
+      context: ..
+      dockerfile: infra/docker/node-service.Dockerfile
+    command: pnpm --filter @doc-ai/vector-mcp dev
+    depends_on:
+      - qdrant
+    environment:
+      VECTOR_MCP_PORT: 3403
+      QDRANT_URL: http://qdrant:6333
+      QDRANT_COLLECTION: document_chunks
+    ports:
+      - "3403:3403"
+
+  metadata-agent:
+    build:
+      context: ..
+      dockerfile: infra/docker/node-service.Dockerfile
+    command: pnpm --filter @doc-ai/metadata-agent dev
+    depends_on:
+      - dms-query-mcp
+    environment:
+      METADATA_AGENT_PORT: 3302
+      DMS_QUERY_MCP_URL: http://dms-query-mcp:3401
+    ports:
+      - "3302:3302"
+
+  fetch-document-agent:
+    build:
+      context: ..
+      dockerfile: infra/docker/node-service.Dockerfile
+    command: pnpm --filter @doc-ai/fetch-document-agent dev
+    depends_on:
+      - dms-fetch-mcp
+    environment:
+      FETCH_DOCUMENT_AGENT_PORT: 3303
+      DMS_FETCH_MCP_URL: http://dms-fetch-mcp:3402
+    ports:
+      - "3303:3303"
+
+  ocr-agent:
+    build:
+      context: ..
+      dockerfile: infra/docker/node-service.Dockerfile
+    command: pnpm --filter @doc-ai/ocr-agent dev
+    environment:
+      OCR_AGENT_PORT: 3304
+    ports:
+      - "3304:3304"
+
+  vector-ingestion-agent:
+    build:
+      context: ..
+      dockerfile: infra/docker/node-service.Dockerfile
+    command: pnpm --filter @doc-ai/vector-ingestion-agent dev
+    depends_on:
+      - vector-mcp
+    environment:
+      VECTOR_INGESTION_AGENT_PORT: 3305
+      VECTOR_MCP_URL: http://vector-mcp:3403
+    ports:
+      - "3305:3305"
+
+  answer-agent:
+    build:
+      context: ..
+      dockerfile: infra/docker/node-service.Dockerfile
+    command: pnpm --filter @doc-ai/answer-agent dev
+    depends_on:
+      - vector-mcp
+    environment:
+      ANSWER_AGENT_PORT: 3306
+      VECTOR_MCP_URL: http://vector-mcp:3403
+    ports:
+      - "3306:3306"
+
+  master-agent:
+    build:
+      context: ..
+      dockerfile: infra/docker/node-service.Dockerfile
+    command: pnpm --filter @doc-ai/master-agent dev
+    depends_on:
+      - metadata-agent
+      - fetch-document-agent
+      - ocr-agent
+      - vector-ingestion-agent
+      - answer-agent
+    environment:
+      MASTER_AGENT_PORT: 3301
+      METADATA_AGENT_URL: http://metadata-agent:3302
+      FETCH_DOCUMENT_AGENT_URL: http://fetch-document-agent:3303
+      OCR_AGENT_URL: http://ocr-agent:3304
+      VECTOR_INGESTION_AGENT_URL: http://vector-ingestion-agent:3305
+      ANSWER_AGENT_URL: http://answer-agent:3306
+      VECTOR_MCP_URL: http://vector-mcp:3403
+    ports:
+      - "3301:3301"
+
+  wrapper-api:
+    build:
+      context: ..
+      dockerfile: infra/docker/node-service.Dockerfile
+    command: pnpm --filter @doc-ai/wrapper-api dev
+    depends_on:
+      - master-agent
+    environment:
+      WRAPPER_API_PORT: 3201
+      MASTER_AGENT_URL: http://master-agent:3301
+      ALLOWED_ORIGINS: http://localhost:3000,http://localhost:3102
+      MODEL_AVAILABLE_NAMES: ai/gpt-oss:latest,ai/ministral3:14B,ai/qwen3-vl:latest,ai/gemma4:latest,ai/gemma4:31B,ai/mxbai-embed-large:latest
+      MODEL_DEFAULT_OCR_NAME: ai/qwen3-vl:latest
+      MODEL_ALLOWED_OCR_NAMES: ai/qwen3-vl:latest
+      MODEL_DEFAULT_AGENT_NAME: ai/gpt-oss:latest
+      MODEL_ALLOWED_AGENT_NAMES: ai/gpt-oss:latest,ai/ministral3:14B,ai/gemma4:latest,ai/gemma4:31B
+    ports:
+      - "3201:3201"
+
+  dms-ui:
+    build:
+      context: ..
+      dockerfile: infra/docker/node-service.Dockerfile
+    command: pnpm --filter @doc-ai/dms-ui dev
+    depends_on:
+      - dms-api
+    environment:
+      DMS_UI_PORT: 3102
+      VITE_DMS_API_URL: http://localhost:3101
+    ports:
+      - "3102:3102"
+
+  chatbot-ui:
+    build:
+      context: ..
+      dockerfile: infra/docker/node-service.Dockerfile
+    command: pnpm --filter @doc-ai/chatbot-ui dev
+    depends_on:
+      - wrapper-api
+    environment:
+      CHATBOT_UI_PORT: 3000
+      VITE_WRAPPER_API_URL: http://localhost:3201
+    ports:
+      - "3000:3000"
+
+volumes:
+  mysql-data:
+  mongo-data:
+  qdrant-data:

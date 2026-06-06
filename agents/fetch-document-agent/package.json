@@ -1,0 +1,14 @@
+{
+  "name": "@doc-ai/fetch-document-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "FETCH_DOCUMENT_AGENT_PORT=${FETCH_DOCUMENT_AGENT_PORT:-3303} DMS_FETCH_MCP_URL=${DMS_FETCH_MCP_URL:-http://localhost:3402} tsx watch src/server.ts"
+  },
+  "dependencies": {
+    "@doc-ai/agent-runtime": "workspace:*",
+    "@doc-ai/shared-config": "workspace:*"
+  }
+}

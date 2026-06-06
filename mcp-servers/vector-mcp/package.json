@@ -1,0 +1,17 @@
+{
+  "name": "@doc-ai/vector-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "VECTOR_MCP_PORT=${VECTOR_MCP_PORT:-3403} tsx watch src/server.ts"
+  },
+  "dependencies": {
+    "@doc-ai/api-contracts": "workspace:*",
+    "@doc-ai/shared-config": "workspace:*",
+    "@doc-ai/shared-errors": "workspace:*",
+    "fastify": "^5.6.2",
+    "zod": "^3.25.76"
+  }
+}

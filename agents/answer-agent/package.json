@@ -1,0 +1,15 @@
+{
+  "name": "@doc-ai/answer-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "ANSWER_AGENT_PORT=${ANSWER_AGENT_PORT:-3306} VECTOR_MCP_URL=${VECTOR_MCP_URL:-http://localhost:3403} tsx watch src/server.ts"
+  },
+  "dependencies": {
+    "@doc-ai/api-contracts": "workspace:*",
+    "@doc-ai/agent-runtime": "workspace:*",
+    "@doc-ai/shared-config": "workspace:*"
+  }
+}

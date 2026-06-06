@@ -1,0 +1,14 @@
+{
+  "name": "@doc-ai/ocr-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "OCR_AGENT_PORT=${OCR_AGENT_PORT:-3304} tsx watch src/server.ts"
+  },
+  "dependencies": {
+    "@doc-ai/agent-runtime": "workspace:*",
+    "@doc-ai/shared-config": "workspace:*"
+  }
+}

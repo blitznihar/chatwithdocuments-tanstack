@@ -1,0 +1,26 @@
+{
+  "name": "@doc-ai/dms-api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "DMS_API_PORT=${DMS_API_PORT:-3101} DMS_STORAGE_MODE=${DMS_STORAGE_MODE:-local} DMS_LOCAL_DATA_DIR=${DMS_LOCAL_DATA_DIR:-.local-data/dms-api} tsx watch src/server.ts",
+    "start": "node dist/server.js",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@doc-ai/api-contracts": "workspace:*",
+    "@doc-ai/shared-config": "workspace:*",
+    "@doc-ai/shared-errors": "workspace:*",
+    "@doc-ai/shared-logger": "workspace:*",
+    "@fastify/cors": "^10.0.1",
+    "@fastify/helmet": "^12.0.1",
+    "@fastify/multipart": "^9.0.3",
+    "fastify": "^5.6.2",
+    "mongodb": "^6.21.0",
+    "mysql2": "^3.15.3",
+    "uuid": "^11.0.5",
+    "zod": "^3.25.76"
+  }
+}

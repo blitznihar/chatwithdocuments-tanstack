@@ -1,0 +1,14 @@
+{
+  "name": "@doc-ai/metadata-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "METADATA_AGENT_PORT=${METADATA_AGENT_PORT:-3302} DMS_QUERY_MCP_URL=${DMS_QUERY_MCP_URL:-http://localhost:3401} tsx watch src/server.ts"
+  },
+  "dependencies": {
+    "@doc-ai/agent-runtime": "workspace:*",
+    "@doc-ai/shared-config": "workspace:*"
+  }
+}

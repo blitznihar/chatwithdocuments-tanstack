@@ -22,7 +22,11 @@ export type DmsConfig = {
 export function loadDmsConfig(): DmsConfig {
   return {
     allowedMimeTypes: envList("UPLOAD_ALLOWED_MIME_TYPES", ["application/pdf"]),
-    allowedOrigins: envList("ALLOWED_ORIGINS", ["http://localhost:3000", "http://localhost:3102"]),
+    allowedOrigins: envList("ALLOWED_ORIGINS", [
+      "http://localhost:3000",
+      "http://localhost:3001",
+      "http://localhost:3102"
+    ]),
     gridFsBucket: envString("MONGODB_GRIDFS_BUCKET", "dms_documents"),
     localDataDir: envString("DMS_LOCAL_DATA_DIR", ".local-data/dms-api"),
     maxPdfBytes: envNumber("MAX_PDF_BYTES", 10 * 1024 * 1024),

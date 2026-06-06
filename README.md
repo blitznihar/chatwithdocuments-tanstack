@@ -22,7 +22,7 @@ pnpm dev
 
 Open:
 
-- Chatbot UI: http://localhost:3000
+- Chatbot UI: http://localhost:3000, or http://localhost:3001 if Vite falls back because 3000 is busy
 - DMS UI: http://localhost:3102
 - Wrapper API models: http://localhost:3201/api/v1/models
 

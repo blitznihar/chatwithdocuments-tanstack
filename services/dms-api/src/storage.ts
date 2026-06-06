@@ -228,9 +228,9 @@ export class DatabaseDocumentStore implements DocumentStore {
       where.push("updated_at > ?");
       params.push(new Date(query.updatedAfter));
     }
-    params.push(query.limit ?? 50);
+    const limit = query.limit ?? 50;
     const [rows] = await this.pool!.execute<mysql.RowDataPacket[]>(
-      `SELECT * FROM documents WHERE ${where.join(" AND ")} ORDER BY updated_at DESC LIMIT ?`,
+      `SELECT * FROM documents WHERE ${where.join(" AND ")} ORDER BY updated_at DESC LIMIT ${limit}`,
       params
     );
     return rows.map(rowToMetadata);

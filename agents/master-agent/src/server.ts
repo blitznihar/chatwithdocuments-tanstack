@@ -1,6 +1,6 @@
 import Fastify from "fastify";
 import { chatQuestionSchema } from "@doc-ai/api-contracts";
-import { envNumber, envString } from "@doc-ai/shared-config";
+import { envNumber, envOptionalString, envString } from "@doc-ai/shared-config";
 import { errorStatus, toErrorEnvelope } from "@doc-ai/shared-errors";
 import { orchestrateQuestion, type MasterAgentClients } from "./orchestrator.js";
 
@@ -11,6 +11,8 @@ const clients: MasterAgentClients = {
   answerAgentUrl: envString("ANSWER_AGENT_URL", "http://localhost:3306"),
   fetchDocumentAgentUrl: envString("FETCH_DOCUMENT_AGENT_URL", "http://localhost:3303"),
   metadataAgentUrl: envString("METADATA_AGENT_URL", "http://localhost:3302"),
+  modelApiKey: envOptionalString("MODEL_API_KEY"),
+  modelBaseUrl: envString("MODEL_BASE_URL", "http://host.docker.internal:12434/engines/v1"),
   ocrAgentUrl: envString("OCR_AGENT_URL", "http://localhost:3304"),
   vectorIngestionAgentUrl: envString("VECTOR_INGESTION_AGENT_URL", "http://localhost:3305"),
   vectorMcpUrl: envString("VECTOR_MCP_URL", "http://localhost:3403")

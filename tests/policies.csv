@@ -1,0 +1,101 @@
+Policy Number,Policy Type,Owner,Insured,Issue Age,Risk Class,Issue Date,Policy Date,Face Amount,Premium,Beneficiary,Rider
+L123456701,Whole Life Insurance,Ava Carter,Mason Parker,31,Standard Non-Tobacco,2026-02-02,2026-02-02,$300000,$48.75,Harper Bennett spouse 100%,Waiver of Premium Rider
+L123456702,Universal Life Insurance,Liam Bennett,Isabella Ward,32,Preferred Tobacco,2026-03-03,2026-03-03,$350000,$52.50,James Reed spouse 100%,Child Term Rider
+L123456703,10-Year Level Term Life Insurance,Noah Foster,Lucas Perry,33,Standard Tobacco,2026-04-04,2026-04-04,$400000,$56.25,Charlotte Russell spouse 100%,Accidental Death Benefit Rider
+L123456704,20-Year Level Term Life Insurance,Emma Diaz,Mia Price,34,Preferred Non-Tobacco,2026-05-05,2026-05-05,$450000,$60.00,Benjamin Morris spouse 100%,Accelerated Death Benefit Rider
+L123456705,Whole Life Insurance,Olivia Hughes,Amelia Sanders,35,Standard Non-Tobacco,2026-06-06,2026-06-06,$500000,$63.75,Evelyn Sanders spouse 100%,Waiver of Premium Rider
+L123456706,Universal Life Insurance,Elijah Hayes,Ethan Hamilton,36,Preferred Tobacco,2026-07-07,2026-07-07,$550000,$67.50,Henry Kim spouse 100%,Child Term Rider
+L123456707,10-Year Level Term Life Insurance,Sophia Jenkins,Harper Cook,37,Standard Tobacco,2026-08-08,2026-08-08,$600000,$71.25,Abigail Howard spouse 100%,Accidental Death Benefit Rider
+L123456708,20-Year Level Term Life Insurance,Mason Perry,James Rivera,38,Preferred Non-Tobacco,2026-09-09,2026-09-09,$650000,$75.00,Alexander Anderson spouse 100%,Accelerated Death Benefit Rider
+L123456709,Whole Life Insurance,Isabella Morris,Charlotte Mitchell,39,Standard Non-Tobacco,2026-10-10,2026-10-10,$700000,$78.75,Ella Diaz spouse 100%,Waiver of Premium Rider
+L123456710,Universal Life Insurance,Lucas Stewart,Benjamin Foster,40,Preferred Tobacco,2026-11-11,2026-11-11,$750000,$82.50,Michael Ward spouse 100%,Child Term Rider
+L123456711,10-Year Level Term Life Insurance,Mia Kelly,Evelyn Parker,41,Standard Tobacco,2026-12-12,2026-12-12,$800000,$86.25,Scarlett Flores spouse 100%,Accidental Death Benefit Rider
+L123456712,20-Year Level Term Life Insurance,Amelia Henderson,Henry Ward,42,Preferred Non-Tobacco,2026-01-13,2026-01-13,$850000,$90.00,Daniel Kelly spouse 100%,Accelerated Death Benefit Rider
+L123456713,Whole Life Insurance,Ethan Hamilton,Abigail Perry,43,Standard Non-Tobacco,2026-02-14,2026-02-14,$900000,$93.75,Grace Graham spouse 100%,Waiver of Premium Rider
+L123456714,Universal Life Insurance,Harper Ortiz,Alexander Price,44,Preferred Tobacco,2026-03-15,2026-03-15,$950000,$97.50,Matthew Murillo spouse 100%,Child Term Rider
+L123456715,10-Year Level Term Life Insurance,James Morgan,Ella Sanders,45,Standard Tobacco,2026-04-16,2026-04-16,$1000000,$101.25,Chloe Mitchell spouse 100%,Accidental Death Benefit Rider
+L123456716,20-Year Level Term Life Insurance,Charlotte Howard,Michael Hamilton,46,Preferred Non-Tobacco,2026-05-17,2026-05-17,$250000,$105.00,Samuel Sullivan spouse 100%,Accelerated Death Benefit Rider
+L123456717,Whole Life Insurance,Benjamin Wood,Scarlett Cook,47,Standard Non-Tobacco,2026-06-18,2026-06-18,$300000,$108.75,Nora Hayes spouse 100%,Waiver of Premium Rider
+L123456718,Universal Life Insurance,Evelyn Mitchell,Daniel Rivera,48,Preferred Tobacco,2026-07-19,2026-07-19,$350000,$112.50,David Patterson spouse 100%,Child Term Rider
+L123456719,10-Year Level Term Life Insurance,Henry Collins,Grace Mitchell,49,Standard Tobacco,2026-08-20,2026-08-20,$400000,$116.25,Lily Brooks spouse 100%,Accidental Death Benefit Rider
+L123456720,20-Year Level Term Life Insurance,Abigail Murphy,Matthew Foster,50,Preferred Non-Tobacco,2026-09-21,2026-09-21,$450000,$45.00,Joseph Hamilton spouse 100%,Accelerated Death Benefit Rider
+L123456721,Whole Life Insurance,Alexander Reed,Chloe Parker,51,Standard Non-Tobacco,2026-10-22,2026-10-22,$500000,$48.75,Aria Bell spouse 100%,Waiver of Premium Rider
+L123456722,Universal Life Insurance,Ella Bryant,Samuel Ward,52,Preferred Tobacco,2026-11-23,2026-11-23,$550000,$52.50,Carter Carter spouse 100%,Child Term Rider
+L123456723,10-Year Level Term Life Insurance,Michael Ward,Nora Perry,53,Standard Tobacco,2026-12-24,2026-12-24,$600000,$56.25,Zoe Murphy spouse 100%,Accidental Death Benefit Rider
+L123456724,20-Year Level Term Life Insurance,Scarlett Powell,David Price,54,Preferred Non-Tobacco,2026-01-25,2026-01-25,$650000,$60.00,Owen Cooper spouse 100%,Accelerated Death Benefit Rider
+L123456725,Whole Life Insurance,Daniel Patterson,Lily Sanders,55,Standard Non-Tobacco,2026-02-26,2026-02-26,$700000,$63.75,Hannah Perry spouse 100%,Waiver of Premium Rider
+L123456726,Universal Life Insurance,Grace Nguyen,Joseph Hamilton,56,Preferred Tobacco,2026-03-27,2026-03-27,$750000,$67.50,Wyatt Bailey spouse 100%,Child Term Rider
+L123456727,10-Year Level Term Life Insurance,Matthew Bailey,Aria Cook,57,Standard Tobacco,2026-04-28,2026-04-28,$800000,$71.25,Stella Ross spouse 100%,Accidental Death Benefit Rider
+L123456728,20-Year Level Term Life Insurance,Chloe Sanders,Carter Rivera,58,Preferred Non-Tobacco,2026-05-01,2026-05-01,$850000,$75.00,John Morgan spouse 100%,Accelerated Death Benefit Rider
+L123456729,Whole Life Insurance,Samuel Barnes,Zoe Mitchell,59,Standard Non-Tobacco,2026-06-02,2026-06-02,$900000,$78.75,Leah James spouse 100%,Waiver of Premium Rider
+L123456730,Universal Life Insurance,Nora Graham,Owen Foster,60,Preferred Tobacco,2026-07-03,2026-07-03,$950000,$82.50,Jack Foster spouse 100%,Child Term Rider
+L123456731,10-Year Level Term Life Insurance,David Reyes,Hannah Parker,30,Standard Tobacco,2026-08-04,2026-08-04,$1000000,$86.25,Aubrey Bryant spouse 100%,Accidental Death Benefit Rider
+L123456732,20-Year Level Term Life Insurance,Lily Bell,Wyatt Ward,31,Preferred Non-Tobacco,2026-09-05,2026-09-05,$250000,$90.00,Luke Long spouse 100%,Accelerated Death Benefit Rider
+L123456733,Whole Life Insurance,Joseph Rivera,Stella Perry,32,Standard Non-Tobacco,2026-10-06,2026-10-06,$300000,$93.75,Audrey Stewart spouse 100%,Waiver of Premium Rider
+L123456734,Universal Life Insurance,Aria James,John Price,33,Preferred Tobacco,2026-11-07,2026-11-07,$350000,$97.50,Anthony Barnes spouse 100%,Child Term Rider
+L123456735,10-Year Level Term Life Insurance,Carter Anderson,Leah Sanders,34,Standard Tobacco,2026-12-08,2026-12-08,$400000,$101.25,Natalie Cook spouse 100%,Accidental Death Benefit Rider
+L123456736,20-Year Level Term Life Insurance,Zoe Ramirez,Jack Hamilton,35,Preferred Non-Tobacco,2026-01-09,2026-01-09,$450000,$105.00,Isaac Wood spouse 100%,Accelerated Death Benefit Rider
+L123456737,Whole Life Insurance,Owen Sullivan,Aubrey Cook,36,Standard Non-Tobacco,2026-02-10,2026-02-10,$500000,$108.75,Savannah Ramirez spouse 100%,Waiver of Premium Rider
+L123456738,Universal Life Insurance,Hannah Parker,Luke Rivera,37,Preferred Tobacco,2026-03-11,2026-03-11,$550000,$112.50,Ava Hughes spouse 100%,Child Term Rider
+L123456739,10-Year Level Term Life Insurance,Wyatt Cooper,Audrey Mitchell,38,Standard Tobacco,2026-04-12,2026-04-12,$600000,$116.25,Liam Powell spouse 100%,Accidental Death Benefit Rider
+L123456740,20-Year Level Term Life Insurance,Stella Russell,Anthony Foster,39,Preferred Non-Tobacco,2026-05-13,2026-05-13,$650000,$45.00,Noah Price spouse 100%,Accelerated Death Benefit Rider
+L123456741,Whole Life Insurance,John Long,Natalie Parker,40,Standard Non-Tobacco,2026-06-14,2026-06-14,$700000,$48.75,Emma Henderson spouse 100%,Waiver of Premium Rider
+L123456742,Universal Life Insurance,Leah Flores,Isaac Ward,41,Preferred Tobacco,2026-07-15,2026-07-15,$750000,$52.50,Olivia Reyes spouse 100%,Child Term Rider
+L123456743,10-Year Level Term Life Insurance,Jack Price,Savannah Perry,42,Standard Tobacco,2026-08-16,2026-08-16,$800000,$56.25,Elijah Gray spouse 100%,Accidental Death Benefit Rider
+L123456744,20-Year Level Term Life Insurance,Aubrey Brooks,Ava Price,43,Preferred Non-Tobacco,2026-09-17,2026-09-17,$850000,$60.00,Sophia Collins spouse 100%,Accelerated Death Benefit Rider
+L123456745,Whole Life Insurance,Luke Coleman,Liam Sanders,44,Standard Non-Tobacco,2026-10-18,2026-10-18,$900000,$63.75,Mason Parker spouse 100%,Waiver of Premium Rider
+L123456746,Universal Life Insurance,Audrey Ross,Noah Hamilton,45,Preferred Tobacco,2026-11-19,2026-11-19,$950000,$67.50,Isabella Jenkins spouse 100%,Child Term Rider
+L123456747,10-Year Level Term Life Insurance,Anthony Kim,Emma Cook,46,Standard Tobacco,2026-12-20,2026-12-20,$1000000,$71.25,Lucas Nguyen spouse 100%,Accidental Death Benefit Rider
+L123456748,20-Year Level Term Life Insurance,Natalie Cook,Olivia Rivera,47,Preferred Non-Tobacco,2026-01-21,2026-01-21,$250000,$75.00,Mia Coleman spouse 100%,Accelerated Death Benefit Rider
+L123456749,Whole Life Insurance,Isaac Murillo,Elijah Mitchell,48,Standard Non-Tobacco,2026-02-22,2026-02-22,$300000,$78.75,Amelia Ortiz spouse 100%,Waiver of Premium Rider
+L123456750,Universal Life Insurance,Savannah Gray,Sophia Foster,49,Preferred Tobacco,2026-03-23,2026-03-23,$350000,$82.50,Ethan Rivera spouse 100%,Child Term Rider
+L123456751,10-Year Level Term Life Insurance,Ava Carter,Mason Parker,50,Standard Tobacco,2026-04-24,2026-04-24,$400000,$86.25,Harper Bennett spouse 100%,Accidental Death Benefit Rider
+L123456752,20-Year Level Term Life Insurance,Liam Bennett,Isabella Ward,51,Preferred Non-Tobacco,2026-05-25,2026-05-25,$450000,$90.00,James Reed spouse 100%,Accelerated Death Benefit Rider
+L123456753,Whole Life Insurance,Noah Foster,Lucas Perry,52,Standard Non-Tobacco,2026-06-26,2026-06-26,$500000,$93.75,Charlotte Russell spouse 100%,Waiver of Premium Rider
+L123456754,Universal Life Insurance,Emma Diaz,Mia Price,53,Preferred Tobacco,2026-07-27,2026-07-27,$550000,$97.50,Benjamin Morris spouse 100%,Child Term Rider
+L123456755,10-Year Level Term Life Insurance,Olivia Hughes,Amelia Sanders,54,Standard Tobacco,2026-08-28,2026-08-28,$600000,$101.25,Evelyn Sanders spouse 100%,Accidental Death Benefit Rider
+L123456756,20-Year Level Term Life Insurance,Elijah Hayes,Ethan Hamilton,55,Preferred Non-Tobacco,2026-09-01,2026-09-01,$650000,$105.00,Henry Kim spouse 100%,Accelerated Death Benefit Rider
+L123456757,Whole Life Insurance,Sophia Jenkins,Harper Cook,56,Standard Non-Tobacco,2026-10-02,2026-10-02,$700000,$108.75,Abigail Howard spouse 100%,Waiver of Premium Rider
+L123456758,Universal Life Insurance,Mason Perry,James Rivera,57,Preferred Tobacco,2026-11-03,2026-11-03,$750000,$112.50,Alexander Anderson spouse 100%,Child Term Rider
+L123456759,10-Year Level Term Life Insurance,Isabella Morris,Charlotte Mitchell,58,Standard Tobacco,2026-12-04,2026-12-04,$800000,$116.25,Ella Diaz spouse 100%,Accidental Death Benefit Rider
+L123456760,20-Year Level Term Life Insurance,Lucas Stewart,Benjamin Foster,59,Preferred Non-Tobacco,2026-01-05,2026-01-05,$850000,$45.00,Michael Ward spouse 100%,Accelerated Death Benefit Rider
+L123456761,Whole Life Insurance,Mia Kelly,Evelyn Parker,60,Standard Non-Tobacco,2026-02-06,2026-02-06,$900000,$48.75,Scarlett Flores spouse 100%,Waiver of Premium Rider
+L123456762,Universal Life Insurance,Amelia Henderson,Henry Ward,30,Preferred Tobacco,2026-03-07,2026-03-07,$950000,$52.50,Daniel Kelly spouse 100%,Child Term Rider
+L123456763,10-Year Level Term Life Insurance,Ethan Hamilton,Abigail Perry,31,Standard Tobacco,2026-04-08,2026-04-08,$1000000,$56.25,Grace Graham spouse 100%,Accidental Death Benefit Rider
+L123456764,20-Year Level Term Life Insurance,Harper Ortiz,Alexander Price,32,Preferred Non-Tobacco,2026-05-09,2026-05-09,$250000,$60.00,Matthew Murillo spouse 100%,Accelerated Death Benefit Rider
+L123456765,Whole Life Insurance,James Morgan,Ella Sanders,33,Standard Non-Tobacco,2026-06-10,2026-06-10,$300000,$63.75,Chloe Mitchell spouse 100%,Waiver of Premium Rider
+L123456766,Universal Life Insurance,Charlotte Howard,Michael Hamilton,34,Preferred Tobacco,2026-07-11,2026-07-11,$350000,$67.50,Samuel Sullivan spouse 100%,Child Term Rider
+L123456767,10-Year Level Term Life Insurance,Benjamin Wood,Scarlett Cook,35,Standard Tobacco,2026-08-12,2026-08-12,$400000,$71.25,Nora Hayes spouse 100%,Accidental Death Benefit Rider
+L123456768,20-Year Level Term Life Insurance,Evelyn Mitchell,Daniel Rivera,36,Preferred Non-Tobacco,2026-09-13,2026-09-13,$450000,$75.00,David Patterson spouse 100%,Accelerated Death Benefit Rider
+L123456769,Whole Life Insurance,Henry Collins,Grace Mitchell,37,Standard Non-Tobacco,2026-10-14,2026-10-14,$500000,$78.75,Lily Brooks spouse 100%,Waiver of Premium Rider
+L123456770,Universal Life Insurance,Abigail Murphy,Matthew Foster,38,Preferred Tobacco,2026-11-15,2026-11-15,$550000,$82.50,Joseph Hamilton spouse 100%,Child Term Rider
+L123456771,10-Year Level Term Life Insurance,Alexander Reed,Chloe Parker,39,Standard Tobacco,2026-12-16,2026-12-16,$600000,$86.25,Aria Bell spouse 100%,Accidental Death Benefit Rider
+L123456772,20-Year Level Term Life Insurance,Ella Bryant,Samuel Ward,40,Preferred Non-Tobacco,2026-01-17,2026-01-17,$650000,$90.00,Carter Carter spouse 100%,Accelerated Death Benefit Rider
+L123456773,Whole Life Insurance,Michael Ward,Nora Perry,41,Standard Non-Tobacco,2026-02-18,2026-02-18,$700000,$93.75,Zoe Murphy spouse 100%,Waiver of Premium Rider
+L123456774,Universal Life Insurance,Scarlett Powell,David Price,42,Preferred Tobacco,2026-03-19,2026-03-19,$750000,$97.50,Owen Cooper spouse 100%,Child Term Rider
+L123456775,10-Year Level Term Life Insurance,Daniel Patterson,Lily Sanders,43,Standard Tobacco,2026-04-20,2026-04-20,$800000,$101.25,Hannah Perry spouse 100%,Accidental Death Benefit Rider
+L123456776,20-Year Level Term Life Insurance,Grace Nguyen,Joseph Hamilton,44,Preferred Non-Tobacco,2026-05-21,2026-05-21,$850000,$105.00,Wyatt Bailey spouse 100%,Accelerated Death Benefit Rider
+L123456777,Whole Life Insurance,Matthew Bailey,Aria Cook,45,Standard Non-Tobacco,2026-06-22,2026-06-22,$900000,$108.75,Stella Ross spouse 100%,Waiver of Premium Rider
+L123456778,Universal Life Insurance,Chloe Sanders,Carter Rivera,46,Preferred Tobacco,2026-07-23,2026-07-23,$950000,$112.50,John Morgan spouse 100%,Child Term Rider
+L123456779,10-Year Level Term Life Insurance,Samuel Barnes,Zoe Mitchell,47,Standard Tobacco,2026-08-24,2026-08-24,$1000000,$116.25,Leah James spouse 100%,Accidental Death Benefit Rider
+L123456780,20-Year Level Term Life Insurance,Nora Graham,Owen Foster,48,Preferred Non-Tobacco,2026-09-25,2026-09-25,$250000,$45.00,Jack Foster spouse 100%,Accelerated Death Benefit Rider
+L123456781,Whole Life Insurance,David Reyes,Hannah Parker,49,Standard Non-Tobacco,2026-10-26,2026-10-26,$300000,$48.75,Aubrey Bryant spouse 100%,Waiver of Premium Rider
+L123456782,Universal Life Insurance,Lily Bell,Wyatt Ward,50,Preferred Tobacco,2026-11-27,2026-11-27,$350000,$52.50,Luke Long spouse 100%,Child Term Rider
+L123456783,10-Year Level Term Life Insurance,Joseph Rivera,Stella Perry,51,Standard Tobacco,2026-12-28,2026-12-28,$400000,$56.25,Audrey Stewart spouse 100%,Accidental Death Benefit Rider
+L123456784,20-Year Level Term Life Insurance,Aria James,John Price,52,Preferred Non-Tobacco,2026-01-01,2026-01-01,$450000,$60.00,Anthony Barnes spouse 100%,Accelerated Death Benefit Rider
+L123456785,Whole Life Insurance,Carter Anderson,Leah Sanders,53,Standard Non-Tobacco,2026-02-02,2026-02-02,$500000,$63.75,Natalie Cook spouse 100%,Waiver of Premium Rider
+L123456786,Universal Life Insurance,Zoe Ramirez,Jack Hamilton,54,Preferred Tobacco,2026-03-03,2026-03-03,$550000,$67.50,Isaac Wood spouse 100%,Child Term Rider
+L123456787,10-Year Level Term Life Insurance,Owen Sullivan,Aubrey Cook,55,Standard Tobacco,2026-04-04,2026-04-04,$600000,$71.25,Savannah Ramirez spouse 100%,Accidental Death Benefit Rider
+L123456788,20-Year Level Term Life Insurance,Hannah Parker,Luke Rivera,56,Preferred Non-Tobacco,2026-05-05,2026-05-05,$650000,$75.00,Ava Hughes spouse 100%,Accelerated Death Benefit Rider
+L123456789,Whole Life Insurance,Wyatt Cooper,Audrey Mitchell,57,Standard Non-Tobacco,2026-06-06,2026-06-06,$700000,$78.75,Liam Powell spouse 100%,Waiver of Premium Rider
+L123456790,Universal Life Insurance,Stella Russell,Anthony Foster,58,Preferred Tobacco,2026-07-07,2026-07-07,$750000,$82.50,Noah Price spouse 100%,Child Term Rider
+L123456791,10-Year Level Term Life Insurance,John Long,Natalie Parker,59,Standard Tobacco,2026-08-08,2026-08-08,$800000,$86.25,Emma Henderson spouse 100%,Accidental Death Benefit Rider
+L123456792,20-Year Level Term Life Insurance,Leah Flores,Isaac Ward,60,Preferred Non-Tobacco,2026-09-09,2026-09-09,$850000,$90.00,Olivia Reyes spouse 100%,Accelerated Death Benefit Rider
+L123456793,Whole Life Insurance,Jack Price,Savannah Perry,30,Standard Non-Tobacco,2026-10-10,2026-10-10,$900000,$93.75,Elijah Gray spouse 100%,Waiver of Premium Rider
+L123456794,Universal Life Insurance,Aubrey Brooks,Ava Price,31,Preferred Tobacco,2026-11-11,2026-11-11,$950000,$97.50,Sophia Collins spouse 100%,Child Term Rider
+L123456795,10-Year Level Term Life Insurance,Luke Coleman,Liam Sanders,32,Standard Tobacco,2026-12-12,2026-12-12,$1000000,$101.25,Mason Parker spouse 100%,Accidental Death Benefit Rider
+L123456796,20-Year Level Term Life Insurance,Audrey Ross,Noah Hamilton,33,Preferred Non-Tobacco,2026-01-13,2026-01-13,$250000,$105.00,Isabella Jenkins spouse 100%,Accelerated Death Benefit Rider
+L123456797,Whole Life Insurance,Anthony Kim,Emma Cook,34,Standard Non-Tobacco,2026-02-14,2026-02-14,$300000,$108.75,Lucas Nguyen spouse 100%,Waiver of Premium Rider
+L123456798,Universal Life Insurance,Natalie Cook,Olivia Rivera,35,Preferred Tobacco,2026-03-15,2026-03-15,$350000,$112.50,Mia Coleman spouse 100%,Child Term Rider
+L123456799,10-Year Level Term Life Insurance,Isaac Murillo,Elijah Mitchell,36,Standard Tobacco,2026-04-16,2026-04-16,$400000,$116.25,Amelia Ortiz spouse 100%,Accidental Death Benefit Rider
+L123456800,20-Year Level Term Life Insurance,Savannah Gray,Sophia Foster,37,Preferred Non-Tobacco,2026-05-17,2026-05-17,$450000,$45.00,Ethan Rivera spouse 100%,Accelerated Death Benefit Rider

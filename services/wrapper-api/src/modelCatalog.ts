@@ -22,16 +22,19 @@ export function loadModelCatalogConfig(): ModelCatalogConfig {
       "ai/gpt-oss:latest",
       "ai/ministral3:14B",
       "ai/gemma4:latest",
-      "ai/gemma4:31B"
+      "ai/qwen3-vl:latest"
     ]),
-    allowedOcrNames: envList("MODEL_ALLOWED_OCR_NAMES", ["ai/qwen3-vl:latest"]),
+    allowedOcrNames: envList("MODEL_ALLOWED_OCR_NAMES", [
+      "ai/gpt-oss:latest",
+      "ai/ministral3:14B",
+      "ai/gemma4:latest",
+      "ai/qwen3-vl:latest"
+    ]),
     availableNames: envList("MODEL_AVAILABLE_NAMES", [
       "ai/gpt-oss:latest",
       "ai/ministral3:14B",
       "ai/qwen3-vl:latest",
-      "ai/gemma4:latest",
-      "ai/gemma4:31B",
-      "ai/mxbai-embed-large:latest"
+      "ai/gemma4:latest"
     ]),
     defaultAgentName: envString("MODEL_DEFAULT_AGENT_NAME", "ai/gpt-oss:latest"),
     defaultOcrName: envString("MODEL_DEFAULT_OCR_NAME", "ai/qwen3-vl:latest")
@@ -91,16 +94,6 @@ function validateCatalog(catalog: ModelCatalog): void {
   }
   if (!agentNames.has(catalog.defaults.agentModelName)) {
     throw new ServiceError("MODEL_CATALOG_INVALID", "Default agent model is not enabled", 500);
-  }
-  for (const model of catalog.dropdowns.ocr.models) {
-    if (!model.capabilities.includes("ocr")) {
-      throw new ServiceError("MODEL_CATALOG_INVALID", `${model.name} is not an OCR-capable model`, 500);
-    }
-  }
-  for (const model of catalog.dropdowns.agent.models) {
-    if (!model.capabilities.includes("chat")) {
-      throw new ServiceError("MODEL_CATALOG_INVALID", `${model.name} is not an agent-capable model`, 500);
-    }
   }
 }
 

@@ -1,7 +1,11 @@
 node_modules/
+.pnpm-store/
 dist/
 .vite/
 .local-data/
+tests/fixtures/L123456*/
+tests/fixures/
+tests/fixures-upload-smoke/
 .env
 *.log
 coverage/

@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sample Payment Document</title>
+    <style>
+      :root {
+        color: #1f2933;
+        background: #f6f7f9;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 32px;
+      }
+
+      main {
+        max-width: 860px;
+        margin: 0 auto;
+        background: #ffffff;
+        border: 1px solid #d8dee6;
+        padding: 40px;
+      }
+
+      h1,
+      h2 {
+        color: #0f2e4d;
+        margin-bottom: 8px;
+      }
+
+      h1 {
+        font-size: 28px;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        border-bottom: 1px solid #d8dee6;
+        font-size: 20px;
+        margin-top: 32px;
+        padding-bottom: 6px;
+      }
+
+      table {
+        border-collapse: collapse;
+        margin: 16px 0;
+        width: 100%;
+      }
+
+      th,
+      td {
+        border: 1px solid #d8dee6;
+        padding: 10px 12px;
+        text-align: left;
+      }
+
+      th {
+        background: #eef3f8;
+        color: #0f2e4d;
+      }
+
+      .document-label {
+        color: #536171;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .status {
+        background: #e9f8ef;
+        border: 1px solid #9fd3b2;
+        color: #185c32;
+        display: inline-block;
+        font-weight: 700;
+        margin-top: 8px;
+        padding: 6px 10px;
+      }
+
+      .summary-grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .summary-card {
+        border: 1px solid #d8dee6;
+        padding: 16px;
+      }
+
+      .summary-card p {
+        margin: 4px 0;
+      }
+
+      .total-row th,
+      .total-row td {
+        background: #f8fafc;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="document-label">Fictional sample for document AI testing</p>
+      <h1>Premium Payment Receipt</h1>
+      <p class="status">Payment Status: Completed</p>
+
+      <section aria-labelledby="receipt-summary-heading">
+        <h2 id="receipt-summary-heading">Receipt Summary</h2>
+        <div class="summary-grid">
+          <div class="summary-card">
+            <p><strong>Receipt Number:</strong> RCP-2027-0102-005703</p>
+            <p><strong>Confirmation Number:</strong> ACH-88000572</p>
+            <p><strong>Payment Date:</strong> January 2, 2027</p>
+            <p><strong>Processed Date:</strong> January 3, 2027</p>
+          </div>
+          <div class="summary-card">
+            <p><strong>Policy Number:</strong> L123456757</p>
+            <p><strong>Policy Owner:</strong> Sophia Jenkins</p>
+            <p><strong>Insured:</strong> Harper Cook</p>
+            <p><strong>Billing Account:</strong> BA-450057</p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="payee-heading">
+        <h2 id="payee-heading">Payer and Payee</h2>
+        <table>
+          <tbody>
+            <tr>
+              <th scope="row">Payer Name</th>
+              <td>Sophia Jenkins</td>
+            </tr>
+            <tr>
+              <th scope="row">Payer Address</th>
+              <td>157 Oak Ridge Ave, Naperville, IL 60563</td>
+            </tr>
+            <tr>
+              <th scope="row">Payee</th>
+              <td>ABC Life and Annuity Company</td>
+            </tr>
+            <tr>
+              <th scope="row">Payee Address</th>
+              <td>100 Market Plaza, Springfield, IL 62701</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section aria-labelledby="payment-method-heading">
+        <h2 id="payment-method-heading">Payment Method</h2>
+        <table>
+          <tbody>
+            <tr>
+              <th scope="row">Method</th>
+              <td>ACH bank draft</td>
+            </tr>
+            <tr>
+              <th scope="row">Bank Name</th>
+              <td>Prairie State Bank</td>
+            </tr>
+            <tr>
+              <th scope="row">Account Type</th>
+              <td>Checking</td>
+            </tr>
+            <tr>
+              <th scope="row">Account Ending</th>
+              <td>4921</td>
+            </tr>
+            <tr>
+              <th scope="row">Authorization</th>
+              <td>Recurring monthly premium draft authorization on file</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section aria-labelledby="line-items-heading">
+        <h2 id="line-items-heading">Payment Details</h2>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Coverage Period</th>
+              <th scope="col">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monthly term life insurance premium</td>
+              <td>January 2, 2027 to February 1, 2027</td>
+              <td>$108.75</td>
+            </tr>
+            <tr>
+              <td>Service fee</td>
+              <td>Not applicable</td>
+              <td>$0.00</td>
+            </tr>
+            <tr class="total-row">
+              <th scope="row" colspan="2">Total Payment Received</th>
+              <td>$108.75</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section aria-labelledby="allocation-heading">
+        <h2 id="allocation-heading">Allocation</h2>
+        <p>
+          The payment was applied to Policy L123456757 for the premium due on
+          January 2, 2027. The next scheduled premium is $108.75 and is due on
+          February 2, 2027.
+        </p>
+      </section>
+
+      <section aria-labelledby="notes-heading">
+        <h2 id="notes-heading">Important Notes</h2>
+        <ul>
+          <li>This receipt confirms payment processing only.</li>
+          <li>Coverage remains subject to the terms of the policy contract.</li>
+          <li>Returned payments may result in reversal of this receipt.</li>
+          <li>Please retain this document for your records.</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

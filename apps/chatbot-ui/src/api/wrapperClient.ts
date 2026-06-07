@@ -1,6 +1,11 @@
 import type { ChatQuestionRequest, ChatQuestionResponse, ModelCatalog } from "@doc-ai/api-contracts";
 
 const wrapperApiUrl = import.meta.env.VITE_WRAPPER_API_URL ?? "http://localhost:3201";
+const dmsUiUrl = import.meta.env.VITE_DMS_UI_URL ?? "http://localhost:3102";
+
+export function documentViewUrl(handleId: string): string {
+  return `${dmsUiUrl.replace(/\/+$/, "")}/documents/${encodeURIComponent(handleId)}`;
+}
 
 export async function getModelCatalog(): Promise<ModelCatalog> {
   return request("/api/v1/models");

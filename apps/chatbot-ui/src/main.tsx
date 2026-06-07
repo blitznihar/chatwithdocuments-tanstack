@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { createRootRoute, createRoute, createRouter, RouterProvider } from "@tanstack/react-router";
-import { Bot, Braces, FileClock, Layers, Send } from "lucide-react";
+import { Bot, Braces, ChevronDown, ExternalLink, FileClock, FileText, Layers, Route, Send } from "lucide-react";
 import type { ChatQuestionResponse, ModelCatalog } from "@doc-ai/api-contracts";
-import { askQuestion, getModelCatalog } from "./api/wrapperClient";
+import { askQuestion, documentViewUrl, getModelCatalog } from "./api/wrapperClient";
 import "./styles.css";
 
 const rootRoute = createRootRoute({
@@ -172,26 +172,76 @@ function ChatPage() {
 function AnswerPanel({ answer }: { answer: ChatQuestionResponse }) {
   return (
     <section className="answer-panel">
-      <h2>Answer</h2>
-      <p>{answer.answer}</p>
-      <div className="metric-grid">
-        <Metric label="OCR selected" value={answer.selectedOcrModelName} />
-        <Metric label="OCR used" value={answer.ocrModelUsedName} />
-        <Metric label="Agent selected" value={answer.selectedAgentModelName} />
-        <Metric label="Agent used" value={answer.agentModelUsedName} />
-        <Metric label="DMS fetch" value={answer.additionalDmsFetchOccurred ? "Yes" : "No"} />
-      </div>
-      <div className="route-line">{answer.routeTaken.join(" -> ")}</div>
-      <div className="citation-list">
-        {answer.citations.map((citation) => (
-          <article className="citation-card" key={`${citation.handleId}-${citation.excerpt}`}>
-            <strong>{citation.handleId}</strong>
-            <span>{citation.policyNumber}</span>
-            <p>{citation.excerpt}</p>
-          </article>
-        ))}
-      </div>
+      <header className="answer-header">
+        <h2>Answer</h2>
+        <span className="answer-chip">{answer.sourceHandleIds.length} sources</span>
+      </header>
+      <FormattedAnswer text={answer.answer} />
+
+      <details className="answer-disclosure">
+        <summary>
+          <span>
+            <FileText size={16} /> Sources
+          </span>
+          <small>{answer.citations.length}</small>
+          <ChevronDown className="disclosure-icon" size={16} />
+        </summary>
+        <div className="citation-list">
+          {answer.citations.map((citation) => (
+            <article className="citation-card" key={`${citation.handleId}-${citation.excerpt}`}>
+              <div className="citation-meta">
+                <strong>{citation.documentType ?? "Document"}</strong>
+                <span>{citation.policyNumber}</span>
+              </div>
+              <a className="citation-link" href={documentViewUrl(citation.handleId)} target="_blank" rel="noreferrer">
+                <code>{citation.handleId}</code>
+                <ExternalLink size={14} aria-hidden="true" />
+              </a>
+              <p>{citation.excerpt}</p>
+            </article>
+          ))}
+        </div>
+      </details>
+
+      <details className="answer-disclosure">
+        <summary>
+          <span>
+            <Route size={16} /> Run details
+          </span>
+          <small>{answer.additionalDmsFetchOccurred ? "DMS fetched" : "Vector only"}</small>
+          <ChevronDown className="disclosure-icon" size={16} />
+        </summary>
+        <div className="metric-grid">
+          <Metric label="OCR selected" value={answer.selectedOcrModelName} />
+          <Metric label="OCR used" value={answer.ocrModelUsedName} />
+          <Metric label="Agent selected" value={answer.selectedAgentModelName} />
+          <Metric label="Agent used" value={answer.agentModelUsedName} />
+          <Metric label="DMS fetch" value={answer.additionalDmsFetchOccurred ? "Yes" : "No"} />
+        </div>
+        <div className="route-line">{answer.routeTaken.join(" -> ")}</div>
+      </details>
     </section>
+  );
+}
+
+function FormattedAnswer({ text }: { text: string }) {
+  const formatted = formatAnswerText(text);
+  return (
+    <div className="answer-body">
+      {formatted.intro.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
+      {formatted.timeline.length > 0 ? (
+        <section className="answer-timeline">
+          <h3>Timeline and History</h3>
+          <ul>
+            {formatted.timeline.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+    </div>
   );
 }
 
@@ -202,6 +252,48 @@ function Metric({ label, value }: { label: string; value: string }) {
       <dd>{value}</dd>
     </div>
   );
+}
+
+function formatAnswerText(value: string): { intro: string[]; timeline: string[] } {
+  const clean = stripMarkdownEmphasis(value).replace(/\s+/g, " ").trim();
+  const [rawIntroText, rawTimelineText] = clean.split(/\s*Timeline and History:\s*/i);
+  const introText = rawIntroText ?? "";
+  const timelineText = rawTimelineText ?? "";
+  const introSentences = splitSentences(introText);
+  return {
+    intro: introSentences.length > 1 ? introSentences : [introText].filter(Boolean),
+    timeline: splitTimelineItems(timelineText)
+  };
+}
+
+function splitSentences(value: string): string[] {
+  return value
+    .split(/(?<=[.!?])\s+(?=[A-Z])/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function splitTimelineItems(value: string): string[] {
+  if (!value.trim()) return [];
+  const normalized = value
+    .replace(/\s+(?=Payment for\b)/g, "\n")
+    .replace(/\s+(?=[A-Z][a-z]+ \d{1,2}, \d{4}\s+(?:to|through)\b)/g, "\n")
+    .replace(/\s+(?=[A-Z][a-z]+ \d{1,2}, \d{4}:)/g, "\n");
+
+  const items = normalized
+    .split(/\n+/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+  return items.length > 1 ? items : splitSentences(value);
+}
+
+function stripMarkdownEmphasis(value: string): string {
+  return value
+    .replace(/\*\*([^*\n]+)\*\*/g, "$1")
+    .replace(/__([^_\n]+)__/g, "$1")
+    .replace(/\*([^*\n]+)\*/g, "$1")
+    .replace(/_([^_\n]+)_/g, "$1");
 }
 
 createRoot(document.getElementById("root")!).render(<RouterProvider router={router} />);

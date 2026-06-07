@@ -150,10 +150,110 @@ textarea {
   color: #a63d2f;
 }
 
+.answer-header {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.answer-chip {
+  background: #eef2f0;
+  border: 1px solid #d7ded9;
+  border-radius: 999px;
+  color: #4f625d;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+
+.answer-body {
+  display: grid;
+  gap: 10px;
+  max-width: 920px;
+}
+
+.answer-body p {
+  line-height: 1.45;
+}
+
+.answer-timeline {
+  border-left: 3px solid #0d5c63;
+  display: grid;
+  gap: 8px;
+  padding-left: 14px;
+}
+
+.answer-timeline h3 {
+  font-size: 15px;
+  margin: 0;
+}
+
+.answer-timeline ul {
+  display: grid;
+  gap: 8px;
+  list-style-position: outside;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.answer-timeline li {
+  line-height: 1.42;
+}
+
+.answer-disclosure {
+  border: 1px solid #d7ded9;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.answer-disclosure summary {
+  align-items: center;
+  cursor: pointer;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr auto auto;
+  min-height: 44px;
+  padding: 0 12px;
+}
+
+.answer-disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.answer-disclosure summary span {
+  align-items: center;
+  color: #384844;
+  display: inline-flex;
+  font-weight: 700;
+  gap: 8px;
+}
+
+.answer-disclosure summary small {
+  color: #62726f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.disclosure-icon {
+  color: #62726f;
+  transition: transform 160ms ease;
+}
+
+.answer-disclosure[open] .disclosure-icon {
+  transform: rotate(180deg);
+}
+
+.answer-disclosure[open] {
+  padding-bottom: 12px;
+}
+
 .metric-grid {
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(5, minmax(0, 1fr));
+  padding: 0 12px;
 }
 
 .metric-grid div {
@@ -178,6 +278,7 @@ dd {
   background: #18221f;
   border-radius: 8px;
   color: #e7f2ef;
+  margin: 10px 12px 0;
   overflow-wrap: anywhere;
   padding: 12px;
 }
@@ -185,6 +286,7 @@ dd {
 .citation-list {
   display: grid;
   gap: 10px;
+  padding: 0 12px;
 }
 
 .citation-card {
@@ -195,8 +297,41 @@ dd {
   padding: 12px;
 }
 
+.citation-meta {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
 .citation-card span {
   color: #62726f;
+}
+
+.citation-link {
+  align-items: center;
+  color: #0d5c63;
+  display: inline-flex;
+  gap: 6px;
+  justify-self: start;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.citation-link:hover,
+.citation-link:focus-visible {
+  text-decoration: underline;
+}
+
+.citation-link code {
+  color: inherit;
+  font-family: inherit;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.citation-card p {
+  line-height: 1.35;
 }
 
 @media (max-width: 860px) {
@@ -213,6 +348,12 @@ dd {
   .topline {
     align-items: flex-start;
     gap: 12px;
+    flex-direction: column;
+  }
+
+  .answer-header,
+  .citation-meta {
+    align-items: flex-start;
     flex-direction: column;
   }
 }

@@ -28,6 +28,27 @@ describe("wrapper API", () => {
     await app.close();
   });
 
+  it("uses explicitly allowed OCR model names from configuration", async () => {
+    const app = await buildWrapperApi({
+      ...config,
+      modelCatalog: {
+        ...config.modelCatalog,
+        allowedOcrNames: ["ai/gpt-oss:latest", "ai/qwen3-vl:latest"],
+        availableNames: ["ai/gpt-oss:latest", "ai/qwen3-vl:latest"],
+        defaultOcrName: "ai/qwen3-vl:latest"
+      }
+    });
+    const response = await app.inject("/api/v1/models");
+
+    expect(response.statusCode).toBe(200);
+    expect(response.json().dropdowns.ocr.models.map((model: { name: string }) => model.name)).toEqual([
+      "ai/gpt-oss:latest",
+      "ai/qwen3-vl:latest"
+    ]);
+
+    await app.close();
+  });
+
   it("rejects models submitted to the wrong dropdown field", async () => {
     const app = await buildWrapperApi(config);
     const response = await app.inject({

@@ -267,6 +267,7 @@ Model capability rules:
 7. The backend must reject unknown, disabled, or category-disallowed model names even if the UI is bypassed.
 8. The same physical model may appear in both dropdowns only when the model catalog explicitly declares both capability sets and both allowlists permit it.
 9. The UI must display friendly model labels while submitting exact configured model names to the wrapper API.
+10. Model-powered routing, sufficiency checks, and answer generation must make real calls to the configured OpenAI-compatible model endpoint. Hardcoded keyword branches, regex summaries, canned responses, or substring-only answers are not acceptable outside isolated unit-test mocks.
 
 ### 7.5 UI Standards
 
@@ -1106,16 +1107,21 @@ Required behavior:
 4. Respect user preference for minimum documents versus all documents.
 5. Respect user preference for latest or delta-only fetching.
 6. Respect the selected agent/functionality model for answer generation and model-powered non-OCR decisions when the selected model is allowed and available.
-7. Pass the selected OCR model to the OCR agent when OCR or visual document extraction is needed.
-8. Use A2A to call metadata agent when DMS metadata is needed.
-9. Use A2A to call fetch-document agent when PDFs are needed.
-10. Use A2A to call OCR agent when fetched PDFs require extraction.
-11. Use A2A to call vector ingestion agent when extracted text must be indexed.
-12. Use A2A to call answer agent for final answer generation.
-13. Return route details for transparency.
-14. Never directly call MySQL or MongoDB.
-15. Never directly fetch PDFs from MongoDB.
-16. Never fabricate citations.
+7. Use the selected agent/functionality model through `MODEL_BASE_URL` for model-powered retrieval planning, including whether retrieved vector chunks are sufficient and whether DMS metadata/PDF fetch is needed.
+8. Parse model retrieval-planning output as a typed decision object and fail clearly when the model response is malformed.
+9. Preserve hard user constraints: `vector-only` must not fetch DMS content, and `latest` must fetch latest DMS content even when existing vector chunks look answerable.
+10. Pass the selected OCR model to the OCR agent when OCR or visual document extraction is needed.
+11. Track and return the actual OCR model reported by the OCR agent, not only the selected OCR model.
+12. Use A2A to call metadata agent when DMS metadata is needed.
+13. Use A2A to call fetch-document agent when PDFs are needed.
+14. Use A2A to call OCR agent when fetched PDFs require extraction.
+15. Use A2A to call vector ingestion agent when extracted text must be indexed.
+16. Use A2A to call answer agent for final answer generation.
+17. Return route details for transparency, including a model-planning step when an LLM made the routing/sufficiency decision.
+18. Never directly call MySQL or MongoDB.
+19. Never directly fetch PDFs from MongoDB.
+20. Never fabricate citations.
+21. Do not replace model-powered retrieval planning with keyword-only, empty-result-only, or hardcoded routing logic.
 
 Required LangGraph nodes:
 
@@ -1225,7 +1231,7 @@ Responsibilities:
 1. Expose A2A endpoint.
 2. Retrieve relevant chunks from Qdrant or receive retrieved chunks from master agent.
 3. Receive the validated `selectedAgentModelName` from the master agent.
-4. Generate the grounded answer using the selected agent/functionality model when available.
+4. Generate the grounded answer by calling the configured OpenAI-compatible chat completions endpoint at `MODEL_BASE_URL` with the selected agent/functionality model.
 5. Fall back only to the configured fallback agent model when the selected model is unavailable, and include a warning that fallback occurred.
 6. Return citations tied to handle IDs and page numbers.
 7. State when answer confidence is low.
@@ -1238,6 +1244,8 @@ Rules:
 3. Must not claim information exists unless supported by retrieved chunks.
 4. Must not execute or proxy arbitrary model names.
 5. Must record the effective agent/functionality model name in logs and response metadata.
+6. Must not produce answers with regex extraction, static templates, canned prose, or raw chunk slicing except in test doubles.
+7. Must fail with a typed upstream/model error when the configured model endpoint cannot return assistant content.
 
 ---
 
@@ -1417,7 +1425,7 @@ QDRANT_COLLECTION=document_chunks
 
 # Model Endpoint
 MODEL_BASE_URL=http://host.docker.internal:12434/engines/v1
-MODEL_API_KEY=local-dev-key
+MODEL_API_KEY=
 MODEL_AVAILABLE_NAMES=ai/gpt-oss:latest,ai/ministral3:14B,ai/qwen3-vl:latest,ai/gemma4:latest,ai/gemma4:31B,ai/mxbai-embed-large:latest
 
 # User-selectable model allowlists
@@ -1501,6 +1509,9 @@ Use this precedence order:
 8. `MODEL_EMBEDDING_NAME` must not be returned in either selectable dropdown.
 9. Startup validation must fail when any default or fallback model is missing from its corresponding allowlist.
 10. The model catalog response must keep OCR-capable and agent-capable models in separate dropdown sections even when the same physical model is configured for both groups.
+11. `MODEL_BASE_URL` must point at an OpenAI-compatible endpoint that supports `POST /chat/completions` for selected agent/functionality models.
+12. `MODEL_API_KEY` is optional for local unauthenticated model runners, but when set it must be sent as a bearer token and must not be logged.
+13. Master agent and answer agent must both receive `MODEL_BASE_URL` and optional `MODEL_API_KEY` from runtime configuration.
 
 ---
 
@@ -1537,7 +1548,8 @@ The local Docker Compose stack must include:
 6. Keep Dockerfiles small and deterministic.
 7. Do not bake secrets into images.
 8. Use `host.docker.internal` only for local model endpoint access when needed.
-9. Provide `scripts/dev-up.sh`, `scripts/dev-down.sh`, and `scripts/reset-local-data.sh`.
+9. Pass `MODEL_BASE_URL` and optional `MODEL_API_KEY` into every service that performs direct model calls, including `master-agent` and `answer-agent`.
+10. Provide `scripts/dev-up.sh`, `scripts/dev-down.sh`, and `scripts/reset-local-data.sh`.
 
 ### 18.3 Kubernetes Readiness
 
@@ -2144,6 +2156,7 @@ Deliverables:
 3. Minimum versus all document decision handling.
 4. Latest/delta handling.
 5. Wrapper API for chatbot.
+6. OpenAI-compatible model call for retrieval planning and vector sufficiency decisions.
 
 Validation:
 
@@ -2151,6 +2164,8 @@ Validation:
 - DMS fallback occurs only when needed.
 - User fetch preferences are respected.
 - Route trace is returned.
+- Test coverage proves the master agent calls the model endpoint for retrieval planning.
+- No routing decision is implemented only as hardcoded keyword matching or empty-result checks.
 
 ### Phase 8 - Chatbot UI
 
@@ -2191,6 +2206,7 @@ Validation:
 - `docker compose up` starts the full stack.
 - DMS upload works.
 - Chatbot answer works.
+- The smoke path exercises a real configured model endpoint for master-agent planning and answer-agent generation.
 - Tests pass.
 - Logs and health checks are usable.
 

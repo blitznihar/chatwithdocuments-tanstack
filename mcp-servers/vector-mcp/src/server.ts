@@ -4,7 +4,10 @@ import { vectorChunkSchema, type VectorChunk } from "@doc-ai/api-contracts";
 import { envNumber } from "@doc-ai/shared-config";
 import { errorStatus, toErrorEnvelope } from "@doc-ai/shared-errors";
 
-const app = Fastify({ logger: false });
+const app = Fastify({
+  logger: false,
+  bodyLimit: internalJsonBodyLimitBytes()
+});
 const port = envNumber("VECTOR_MCP_PORT", 3403);
 const chunks = new Map<string, VectorChunk>();
 
@@ -75,4 +78,9 @@ function tokenize(value: string): string[] {
 function scoreChunk(tokens: string[], chunk: VectorChunk): number {
   const haystack = `${chunk.text} ${chunk.policyNumber ?? ""} ${chunk.documentType ?? ""}`.toLowerCase();
   return tokens.reduce((score, token) => score + (haystack.includes(token) ? 1 : 0), 0);
+}
+
+function internalJsonBodyLimitBytes(): number {
+  const configured = Number(process.env.VECTOR_MCP_BODY_LIMIT_BYTES ?? process.env.INTERNAL_JSON_BODY_LIMIT_BYTES);
+  return Number.isFinite(configured) && configured > 0 ? configured : 20 * 1024 * 1024;
 }

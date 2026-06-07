@@ -12,6 +12,7 @@
     "test:e2e": "vitest run apps agents",
     "test:integration": "vitest run services mcp-servers agents",
     "test:unit": "vitest run packages",
+    "generate:policy-pdfs": "node --import tsx scripts/generate-policy-pdfs.ts",
     "smoke": "bash scripts/smoke-test.sh"
   },
   "dependencies": {
@@ -36,6 +37,8 @@
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.6.0",
     "concurrently": "^9.2.1",
+    "html2pdf.js": "^0.14.0",
+    "puppeteer-core": "^25.1.0",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "vite": "^6.3.6",

@@ -62,4 +62,4 @@ pnpm smoke
 
 ## Environment
 
-See `.env.example` for ports, service URLs, model allowlists, upload limits, and database settings.
+See `.env.example` for ports, service URLs, model allowlists, upload limits, and database settings. The master and answer agents call the OpenAI-compatible endpoint configured by `MODEL_BASE_URL`; set `MODEL_API_KEY` when that endpoint requires bearer-token auth.
